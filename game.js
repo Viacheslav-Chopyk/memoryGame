@@ -206,5 +206,5 @@ class MatchGrid {
     }
 }
 
-new MatchGrid(4, 4, 4, 4, 10, 'default_theme');
+new MatchGrid(4, 4, 4, 4, 60, 'default_theme');
 
