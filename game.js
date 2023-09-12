@@ -1,11 +1,11 @@
 class MatchGrid {
     constructor(width, height, columns, rows, timeLimit, theme) {
         this.selectors = {
-            boardContainer: document.querySelector('.board-container'),
-            moves: document.querySelector('.moves'),
-            timer: document.querySelector('.timer'),
-            start: document.querySelector('button'),
-            reset: document.querySelector('.button-reset'),
+            boardContainer: document.getElementById('board-container'),
+            movesCount: document.getElementById('moves'),
+            timer: document.getElementById('timer'),
+            start: document.getElementById('button-start'),
+            reset: document.getElementById('button-reset'),
         };
 
         this.state = {
@@ -54,6 +54,7 @@ class MatchGrid {
     }
 
     generateGame() {
+        // array for cards
         const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
         const picks = this.pickRandom(numbers, (this.columns * this.rows) / 2);
         const items = this.shuffle([...picks, ...picks]);
@@ -84,7 +85,7 @@ class MatchGrid {
         this.state.loop = setInterval(() => {
             this.state.totalTime++;
     
-            this.selectors.moves.innerText = `${this.state.totalFlips} moves`;
+            this.selectors.movesCount.innerText = `${this.state.totalFlips} moves`;
             this.selectors.timer.innerText = `time: ${this.state.totalTime} sec`;
     
             if (this.state.totalTime >= this.timeLimit) {
@@ -115,7 +116,7 @@ class MatchGrid {
     
         this.selectors.boardContainer.innerHTML = '';
         this.generateGame();
-        this.selectors.moves.innerText = `${this.state.totalFlips} moves`;
+        this.selectors.movesCount.innerText = `${this.state.totalFlips} moves`;
         this.selectors.timer.innerText = `time: ${this.state.totalTime} sec`;
         this.selectors.boardContainer.classList.remove('flipped');
         this.selectors.start.classList.remove('disabled');
